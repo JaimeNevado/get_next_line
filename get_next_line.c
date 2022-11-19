@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaimenevado <jaimenevado@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jnevado- <jnevado-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 12:17:52 by jaimenevado       #+#    #+#             */
-/*   Updated: 2022/11/18 16:19:03 by jaimenevado      ###   ########.fr       */
+/*   Updated: 2022/11/19 20:12:38 by jnevado-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,36 +51,29 @@ char	*ft_clean_buffer(const char *buff, char *str)
 
 char	*get_next_line(int fd)
 {
-	char		*s1;
+	static char	*s1;
 	static char	*buff;
 	int			leido;
+	int			i;
 
+	i = 0;
 	//Reserva de memoria
+
 	buff = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (buff == NULL)
 		return (NULL);
 	s1 = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (s1 == NULL)
 		return (NULL);
-
-	leido = read(fd, buff, BUFFER_SIZE);
-	//Mientras haya que leer, leemos
-	if (leido != 0)
+	leido = BUFFER_SIZE;
+	while (buff[i] != '\0')
 	{
-			//
-			s1 = ft_get_line(buff, leido);
-			//Eliminamos del buff los elementos ya impresos
-			//ft_strjoin(s1, buff);
-			buff = ft_clean_buffer(buff, s1);
-			printf("%s\n", s1);
-			//
-			//Eliminamos del buff los elementos ya impresos
-			//buff = ft_clean_buffer(buff, ft_get_line(buff, leido));
-			ft_strjoin(s1, buff);
-			//printf("%s\n", buff);
-
+		leido = read(fd, buff, BUFFER_SIZE);
+		if (ft_strchr(buff, '\n'))
+			s1 = ft_strjoin(s1, buff);
 	}
-	return (buff);
+
+	return (s1);
 }
 
 
@@ -89,6 +82,6 @@ char	*get_next_line(int fd)
     int     fd;
     fd = open("text.txt",  O_RDONLY);
 	
-	get_next_line(fd);
+	printf("\n%s", get_next_line(fd));
 	return (0);
 }

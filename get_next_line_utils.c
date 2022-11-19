@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaimenevado <jaimenevado@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jnevado- <jnevado-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 12:17:48 by jaimenevado       #+#    #+#             */
-/*   Updated: 2022/11/11 14:26:25 by jaimenevado      ###   ########.fr       */
+/*   Updated: 2022/11/19 20:06:51 by jnevado-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-
+char	*ft_strchr(const char *s, int c)
+{
+	while (*(char *)s != (char)c && *s)
+		s++;
+	if (*s == (char)c)
+		return ((char *)s);
+	return (0);
+}
