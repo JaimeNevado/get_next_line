@@ -5,7 +5,6 @@
 <p align="center">
 	<b><i>Reading a line on a fd is way too tedious</i></b><br>
 </p>
----
 
 ## 💡 About the project
 
