@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnevado- <jnevado-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Jaime Nevado <jaimenevadof@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 12:17:52 by jaimenevado       #+#    #+#             */
-/*   Updated: 2022/11/21 13:51:34 by jnevado-         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:42:57 by Jaime Nevad      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_empty_line(char	**str)
+void *ft_empty_line(char **str)
 {
 	if (*str != NULL)
 	{
@@ -22,12 +22,12 @@ void	*ft_empty_line(char	**str)
 	return (NULL);
 }
 
-char	*ft_read_file(int fd, int *readed, char **lines)
+char *ft_read_file(int fd, int *readed, char **lines)
 {
-	char	*buffer;
-	char	*save;
+	char *buffer;
+	char *save;
 
-	buffer = (char *)malloc (((BUFFER_SIZE) + 1) * sizeof(char));
+	buffer = (char *)malloc(((BUFFER_SIZE) + 1) * sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
 	while (*readed > 0)
@@ -42,7 +42,7 @@ char	*ft_read_file(int fd, int *readed, char **lines)
 		save = ft_strjoin(*lines, buffer);
 		ft_empty_line(lines);
 		if (ft_strchr(save, '\n') || (*readed == 0))
-			break ;
+			break;
 		*lines = ft_strjoin(save, NULL);
 		ft_empty_line(&save);
 	}
@@ -51,10 +51,10 @@ char	*ft_read_file(int fd, int *readed, char **lines)
 	return (save);
 }
 
-char	*ft_store_line(const char	*str)
+char *ft_store_line(const char *str)
 {
-	char	*store_line;
-	char	*first_part;
+	char *store_line;
+	char *first_part;
 
 	if (!str)
 		return (NULL);
@@ -71,12 +71,12 @@ char	*ft_store_line(const char	*str)
 		return (NULL);
 }
 
-char	*ft_get_line(const char	*str)
+char *ft_get_line(const char *str)
 {
-	char	*solution;
-	char	*first_part;
-	int		lenght_1;
-	int		lenght_2;
+	char *solution;
+	char *first_part;
+	int lenght_1;
+	int lenght_2;
 
 	if (str == NULL)
 		return (NULL);
@@ -88,7 +88,7 @@ char	*ft_get_line(const char	*str)
 			lenght_2 = ft_strlen(first_part + 1);
 		else
 			lenght_2 = 0;
-		solution = (char *)malloc (((lenght_1 - lenght_2) + 1) * sizeof(char));
+		solution = (char *)malloc(((lenght_1 - lenght_2) + 1) * sizeof(char));
 		if (solution == NULL)
 			return (NULL);
 		ft_strlcpy(solution, str, ((lenght_1 - lenght_2 + 1)));
@@ -98,12 +98,12 @@ char	*ft_get_line(const char	*str)
 	return (solution);
 }
 
-char	*get_next_line(int fd)
+char *get_next_line(int fd)
 {
-	static char		*lines;
-	char			*first_part;
-	char			*line_sol;
-	int				readed;
+	static char *lines;
+	char *first_part;
+	char *line_sol;
+	int readed;
 
 	readed = 1;
 	if ((fd < 0) || (BUFFER_SIZE < 1))

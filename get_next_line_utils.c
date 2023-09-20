@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnevado- <jnevado-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Jaime Nevado <jaimenevadof@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 12:17:48 by jaimenevado       #+#    #+#             */
-/*   Updated: 2022/11/21 14:12:35 by jnevado-         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:50:55 by Jaime Nevad      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-//STRJOIN cambiada con ayuda de asalas-
-char	*ft_strjoin(const char *s1, const char *s2)
+char *ft_strjoin(const char *s1, const char *s2)
 {
-	char	*strjoin;
-	int		strjoin_len;
+	char *strjoin;
+	int strjoin_len;
 
 	if ((!s1) && (!s2))
 		return (NULL);
@@ -26,7 +25,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		strjoin_len = ft_strlen(s1);
 	if (s1 && s2)
 		strjoin_len = ft_strlen(s1) + ft_strlen(s2);
-	strjoin = (char *)malloc ((strjoin_len + 1) * sizeof(char));
+	strjoin = (char *)malloc((strjoin_len + 1) * sizeof(char));
 	if (strjoin == NULL)
 		return (NULL);
 	if (!s1)
@@ -41,10 +40,10 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (strjoin);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int	i;
-	unsigned int	l;
+	unsigned int i;
+	unsigned int l;
 
 	l = ft_strlen(src);
 	i = 0;
@@ -60,12 +59,12 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (l);
 }
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	dst_l;
-	unsigned int	src_l;
+	unsigned int i;
+	unsigned int j;
+	unsigned int dst_l;
+	unsigned int src_l;
 
 	dst_l = ft_strlen(dst);
 	src_l = ft_strlen(src);
@@ -85,9 +84,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	return (dst_l + src_l);
 }
 
-size_t	ft_strlen(const char *s)
+size_t ft_strlen(const char *s)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -97,9 +96,9 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char *ft_strchr(const char *s, int c)
 {
-	int		i;
+	int i;
 
 	i = 0;
 	while (s[i] != '\0')
