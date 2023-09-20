@@ -29,7 +29,7 @@ All the libraries required for the get_next_line function are already included i
 
 **1. Using it in your code**
 
-Modify de main.c file to use as you desire. Only pass an fd argument to the function "get_next_line()", it will return a string with the last line read.
+Modify the main.c file as needed. Simply provide an 'fd' argument to the 'get_next_line()' function, and it will return a string containing the last read line.
 
 ## 📋 Testing
 Simply run this command:
